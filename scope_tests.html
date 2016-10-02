@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Test Suite</title>
+    <script>
+      function assert(value, description) {
+        var li = document.createElement('li');
+        li.className = value ? 'pass' : 'fail';
+        li.appendChild(document.createTextNode(description));
+        document.getElementById('results').appendChild(li);
+      }
+
+      window.onload = function() {
+        assert(true, 'The test suite is running');
+        assert(false, 'Fail example');
+
+        function testFunction(name) {
+          assert(typeof inner === 'function', "inner exists " + name + " declaration");
+        };
+
+        function testNumber(name) {
+          assert(typeof a === 'number', "number exists " + name + " declaration");
+        };
+
+
+        // the scope of testFunction and testNumber are global AND I didnt pass
+        // the function or number as a parameter, so it does not know it
+        function outter() {
+          testNumber('before');
+          var a = 1;
+          testNumber('after');
+
+          testFunction('before');
+          function inner(){ }
+          testFunction('after');
+        }
+
+        outter();
+      }
+    </script>
+    <style>
+      #results li.pass { color: green; }
+      #results li.fail { color: red; }
+    </style>
+  </head>
+  <body>
+    <ul id='results'></ul>
+  </body>
+</html>

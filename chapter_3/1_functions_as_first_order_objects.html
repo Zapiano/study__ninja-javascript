@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <title>Functions as First Order Objects</title>
+    <script type='text/javascript' src='tests_and_asserts.js'></script>
+    <script>
+      window.onload = function() {
+
+
+        test('First order objects', function() {
+          assert(true, '');
+          assert(true, 'Second assertion completed');
+          assert(false, 'Third assertion fail');
+        });
+      };
+    </script>
+    <style>
+      #results li.pass { color: green; }
+      #results li.fail { color: red; }
+    </style>
+  </head>
+  <body>
+    <ul id='results'></ul>
+  </body>
+</html>
